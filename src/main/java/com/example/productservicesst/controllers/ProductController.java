@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.SQLOutput;
 import java.util.List;
 
 
@@ -26,19 +25,22 @@ public class ProductController { //waiter
 
 
     @GetMapping("/{id}")
-    public ResponseEntity getProductById(@PathVariable("id") Long id){
-        Product product = null;
+    public Product getProductById(@PathVariable("id") Long id){
 
-        try{
-            product = productService.getProductById(id);
-            ResponseEntity<Product> responseEntity  = new ResponseEntity<>(product, HttpStatus.OK);
-            return responseEntity;
-        }catch (RuntimeException exception) {
-            ExceptionDto dto = new ExceptionDto();
-            dto.setMessage("Something went wrong");
-            ResponseEntity<ExceptionDto> response = new ResponseEntity<>(dto, HttpStatus.BAD_REQUEST);
-            return response;
-        }
+//        Product product = null;
+//
+//        try{
+//            product = productService.getProductById(id);
+//            ResponseEntity<Product> responseEntity  = new ResponseEntity<>(product, HttpStatus.OK);
+//            return responseEntity;
+//        }catch (RuntimeException exception) {
+//            ExceptionDto dto = new ExceptionDto();
+//            dto.setMessage("Something went wrong");
+//            ResponseEntity<ExceptionDto> response = new ResponseEntity<>(dto, HttpStatus.BAD_REQUEST);
+//            return response;
+//        }
+
+        return productService.getProductById(id);
     }
 
     @GetMapping
